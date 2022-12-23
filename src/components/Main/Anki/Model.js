@@ -96,7 +96,7 @@ export default function ModelTemplate(props) {
             "action": "createModel",
             "version": 6,
             "params": {
-                "modelName": "TestModel2",
+                "modelName": props.modelName,
                 "inOrderFields": ["Slug", "SlugFurigana", "Sentence", "SentenceFurigana", "Pos", "Definitions"],
                 "css": css,
                 "isCloze": false,
