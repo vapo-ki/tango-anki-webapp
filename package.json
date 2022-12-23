@@ -20,9 +20,7 @@
   "homepage": "https://github.com/vapo-ki/test-app#readme",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
+    "react-dom": "^18.2.0",
     "@babel/core": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
