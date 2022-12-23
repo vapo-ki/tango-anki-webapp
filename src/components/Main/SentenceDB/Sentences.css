@@ -1,0 +1,29 @@
+.sentencesContainer {
+    min-width: 30em;
+    max-width: 70em;
+    width: 100%;
+    
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+    color: var(--secondary-text-color);
+}
+
+.sentencesSeperator > hr {
+    min-width: 70em;
+}
+
+.sentences {
+    min-width: 30em;
+    max-width: 50em;
+    width: 100%;
+
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

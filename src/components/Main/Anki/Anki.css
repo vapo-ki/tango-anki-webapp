@@ -1,0 +1,99 @@
+.anki-active {
+    background-color: var(--main-color);
+    width: 100em;
+    margin: 20px;
+    padding: 20px;
+}
+
+.anki-card {
+    background-color: var(--tertiary-color);
+    height: fit-content;
+    border-radius: 20px;
+    padding: 20px;
+    padding-bottom: 40px;
+    position: relative;
+    
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--highlight-text-color);
+
+    display: flex;
+    justify-content: space-between;
+
+    color: white;
+}
+
+.anki-back {
+    width: 100%;
+}
+
+.anki-front {
+    width: 100%;
+}
+
+.vr:after {
+    height: 90%;
+    content: "";
+    position: absolute;
+    border-left: 6px dashed #202020;
+}
+
+.cardFrontSlug {
+    font-size: 4em;
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 3em;
+}
+
+.cardFrontSentence {
+    font-size: 2em;
+    text-align: center;
+}
+
+.cardBackContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.cardBackContent > hr {
+    border: 1px solid white;
+    width: 80%;
+}
+
+.cardBackSlugContent {
+    text-align: center;
+    margin-top: 0.5em;
+}
+
+.cardBackSlug {
+    font-size: 4em;
+}
+
+.cardBackSlugReading {
+    font-size: 1.5em;
+}
+
+.cardSenses {
+    margin-top: 10px;
+}
+
+.cardSense {
+    margin-bottom: 5px;
+}
+
+.cardSensePos {
+    font-size: 0.8em;
+    color: var(--secondary-text-color);
+}
+
+.cardBackSentence {
+    margin-top: 20px;
+}
+
+.cardBackSentenceJp {
+    font-size: 2em;
+    text-align: center;
+}

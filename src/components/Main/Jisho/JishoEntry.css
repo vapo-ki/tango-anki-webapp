@@ -1,0 +1,92 @@
+.cardContainer-active {
+    max-width: 60rem;
+    min-width: 30rem;
+    width: 100%
+}
+
+.cardContainer-inActive {
+    display: none;
+}
+
+.jishoEntryButton {
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color);
+    border: none;
+    color: white;
+    padding: 20px 20px;
+    cursor: pointer;
+
+    display: flex;
+}
+
+.jishoEntryButton:hover {
+    background-color: var(--tertiary-color);
+}
+
+.jishoEntrySelected {
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-color);
+
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--highlight-text-color);
+
+    border-radius: 5px;
+
+    color: white;
+    padding: 20px 20px;
+
+    display: flex;
+}
+
+.entryContainer {
+    display: grid;
+    grid-template-columns: 30% auto;
+    align-content: start;
+    gap: 10px;
+    width: 100%;
+}
+
+.entrySlugContainer {
+    padding-left: 10px;
+}
+
+.entryReading {
+    text-align:start;
+    font-size: 0.8em;
+}
+
+.entrySlug {
+    font-size: 2em;
+    color: var(--highlight-text-color);
+    text-align: start;
+    height: fit-content;
+}
+
+.entryTranslation {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: start;
+}
+
+.entryExtra {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.entrySensePos {
+    font-size: 0.8em;
+    color: var(--secondary-text-color);
+    
+}
+
+.entrySenseTranslations {
+    font-size: 1.2em;
+}
+
+.entryExtraContainer {
+    text-align: start;
+}

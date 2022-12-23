@@ -1,0 +1,24 @@
+:root {
+    --main-color: #222426;
+    --secondary-color: #141414;
+    --tertiary-color: #272727;
+
+    --highlight-text-color: #ff8a3d;
+    --main-text-color: #222426;
+    --secondary-text-color: #bebebe;
+    
+    
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.app {
+    background-color: var(--main-color);
+}
+
+body {
+    background-color: var(--main-color);
+}
