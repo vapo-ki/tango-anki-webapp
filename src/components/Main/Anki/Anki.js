@@ -36,7 +36,7 @@ export default function Anki(props) {
       "params": {
           "note": {
               "deckName": deckName.current.value,
-              "modelName": "TestModel3",
+              "modelName": modelName,
               "fields": {
                   "Slug": cardData.Slug,
                   "SlugFurigana": cardData.SlugFurigana,
