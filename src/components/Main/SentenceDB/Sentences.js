@@ -39,9 +39,9 @@ export default function Sentences(props) {
   return (
     <>
       <div className='sentencesContainer'>
-        <div className='sentencesSeperator'>
-          Select sentence
+        <div className={props.selectedSentence.sentenceEn != null ? 'sentencesSeperator-inactive' : 'sentencesSeperator'}>
           <hr></hr>
+          <h1>Select Sentence</h1>
         </div>
         <div className='sentences'>
           {sentences.map(sentence => {

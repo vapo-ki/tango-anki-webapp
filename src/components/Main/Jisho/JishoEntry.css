@@ -13,7 +13,7 @@
     height: 100%;
     background-color: var(--secondary-color);
     border: none;
-    color: white;
+    color: var(--main-text-color);
     padding: 20px 20px;
     cursor: pointer;
 
@@ -35,8 +35,8 @@
 
     border-radius: 5px;
 
-    color: white;
-    padding: 20px 20px;
+    color: var(--main-text-color);
+    padding: 20px 30px;
 
     display: flex;
 }
@@ -49,20 +49,19 @@
     width: 100%;
 }
 
-.entrySlugContainer {
-    padding-left: 10px;
-}
-
 .entryReading {
     text-align:start;
-    font-size: 0.8em;
+    font-size: 1.2em;
+    font-family: 'Noto Serif JP', serif !important;
 }
 
 .entrySlug {
-    font-size: 2em;
+    font-size: 2.5em;
     color: var(--highlight-text-color);
     text-align: start;
     height: fit-content;
+    font-family: 'Noto Sans JP', sans-serif !important;
+    
 }
 
 .entryTranslation {

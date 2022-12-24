@@ -1,0 +1,8 @@
+.how-to {
+    width: 59%;
+    color: var(--secondary-text-color);
+}
+
+.special-text {
+    color: var(--highlight-text-color);
+}

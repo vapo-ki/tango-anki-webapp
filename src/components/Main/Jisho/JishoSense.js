@@ -18,7 +18,7 @@ export default function JishoSense(props) {
     const infoSelected = () => {
         return (
             <div className='senseContainer'>
-                <button className='senseButton' onClick={() => ToggleSense()}>
+                <button className='senseButton button' onClick={() => ToggleSense()}>
                     <div className='senseInfo'>
                         <div className='sensePos'>
                             {props.pos.join(", ")}
