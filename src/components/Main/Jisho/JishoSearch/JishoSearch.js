@@ -27,7 +27,7 @@ export default function Navbar(props) {
 
   return (
     <>
-    <a className='logo' href="http://localhost:8080/">単語</a>
+    <a className='logo' href="https://tango.cyclic.app/">単語</a>
     <div className='jishoSearchContainer'>
         <input className='jishoSearchBar' type="text" ref={jishoSearchTerm} placeholder="Search Jisho..." onKeyDown={SearchJisho} />
         <button className="jishoSearchButton" onClick={SearchJisho} >Search Jisho</button>

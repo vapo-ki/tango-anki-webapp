@@ -8,8 +8,9 @@ export default function Anki(props) {
   const [ cardData, setCardData ] = useState();
   const [ cardLanguage, setCardLanguage ] = useState("japanese")
 
-  const deckName = useRef()
+  const deckName = useRef("TangoDeck")
   const modelName = "TangoModel"
+  const defaultDeck = "TangoDeck"
 
   const InitModel = (modelTemplate) => {
     setModel(modelTemplate)
@@ -20,6 +21,16 @@ export default function Anki(props) {
   }
 
   const CreateDeckBody = () => {
+    if (deckName.current.value == "") {
+      return ({
+        "action": "createDeck",
+        "version": 6,
+        "params": {
+            "deck": defaultDeck
+        }
+      })
+    }
+
     return ({
       "action": "createDeck",
       "version": 6,
@@ -30,6 +41,27 @@ export default function Anki(props) {
   }
 
   const GetCardBody = () => {
+    if (deckName.current.value == "") {
+      return {
+        "action": "guiAddCards",
+        "version": 6,
+        "params": {
+            "note": {
+                "deckName": defaultDeck,
+                "modelName": modelName,
+                "fields": {
+                    "Slug": cardData.Slug,
+                    "SlugFurigana": cardData.SlugFurigana,
+                    "Sentence": cardData.Sentence,
+                    "SentenceFurigana": cardData.SentenceFurigana,
+                    "SentenceEn": cardData.SentenceEn,
+                    "Pos": cardData.Pos,
+                    "Definitions": cardData.Definitions
+                }
+            }
+        }
+      }
+    }
     return {
       "action": "guiAddCards",
       "version": 6,
@@ -75,87 +107,13 @@ export default function Anki(props) {
     HTTPPost(CreateDeckBody())
     HTTPPost(model)
     HTTPPost(GetCardBody())
-
-    /* const request = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(GetCardBody())
-    }
-
-    fetch('http://localhost:8765', request)
-    .then(response => {
-        return response.json()
-    })
-    .then(json => {
-      console.log(json);
-
-      if (json.error === "deck was not found: " + deckName.current.value) {
-        console.log("Yep deck not found");
-
-        const request = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(CreateDeckBody())
-        }
-    
-        fetch('http://localhost:8765', request)
-        .then(response => {
-          return response.json()
-        })
-        .then(json => {
-          console.log("Sending Card...");
-          const request = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(GetCardBody())
-      }
-        })
-      }
-      
-      if (json.error === "model was not found: " + modelName) {
-        console.log("Yep model not found")
-
-        const request = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(model)
-        }
-    
-        fetch('http://localhost:8765', request)
-        .then(response => {
-          return response.json()
-        })
-        .then(json => {
-          console.log("Sending Card...");
-          const request = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(GetCardBody())
-      }
-        })
-      }
-
-    })
-    .catch(err => {
-        console.log(err);
-    }) */
   }
 
   const options = () => {
     return(
       <div className='options'>
         <h2>Enter <span className='special-text'>Deck Name</span>:</h2>
-        <input className='ankiDeckName' type="text" ref={deckName} value='TangoDeck' />
+        <input className='ankiDeckName' type="text" ref={deckName}></input>
         <button className='ankiButton' onClick={SendToAnki}>Send Anki</button>
       </div>
     )
@@ -221,7 +179,7 @@ export default function Anki(props) {
           <div className='cardSenses'>
             {props.term.senses.map(sense => {
                 return (
-                  <div className='cardSense'>
+                  <div className='cardSense' key={sense.definitions[0]}>
                     <div className='cardSensePos'>
                       {sense.pos.join(", ")}
                     </div>

@@ -126,7 +126,7 @@ export default function JishoEntry(props) {
                 Object.entries(props.info.senses).map(([key, sense]) => {
                   let first = false
                   if (key == 0) { first = true }
-                  return <JishoSense SetSenses={SetSenses} id={key} pos={sense.parts_of_speech} english_definitions={sense.english_definitions} isEntrySelected={props.isSelected} first={first}/>
+                  return <JishoSense key={key} SetSenses={SetSenses} id={key} pos={sense.parts_of_speech} english_definitions={sense.english_definitions} isEntrySelected={props.isSelected} first={first}/>
                 })
               }
             </div>
