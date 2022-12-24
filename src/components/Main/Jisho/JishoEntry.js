@@ -81,7 +81,10 @@ export default function JishoEntry(props) {
     const backButton = () => {
       if (props.isSelected == true) {
         return (
-          <button className='unselectButton' onClick={() => props.SelectTerm({})}>Change Selection</button>
+          <><br />
+          <button className='unselectButton button' onClick={() => props.SelectTerm({})}>Change Selection</button>
+          </>
+          
         )
       }
     }
@@ -112,12 +115,13 @@ export default function JishoEntry(props) {
               </div>
               <div className='entrySlug'>
                 {props.info.slug}
-              </div>
+              </div><br/>
               <div className='entryExtra'>
                 {extraTemplate()}
               </div>
             </div>
             <div className='entryTranslation'>
+              {props.isSelected ? "Select Translations:" : ""}
               {
                 Object.entries(props.info.senses).map(([key, sense]) => {
                   let first = false
@@ -132,7 +136,7 @@ export default function JishoEntry(props) {
 
     if (!props.isSelected) {
       return (
-        <button className='jishoEntryButton' onClick={() => props.SelectTerm(entry)}>
+        <button className='button jishoEntryButton' onClick={() => props.SelectTerm(entry)}>
           {entryInfo()}
         </button>
       )

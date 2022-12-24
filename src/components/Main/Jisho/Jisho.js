@@ -1,25 +1,20 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import JishoEntry from './JishoEntry';
+import JishoSearch from './JishoSearch/JishoSearch'
 import './Jisho.css'
 
 export default function Jisho(props) {
   const jishoSearchTerm = useRef()
   const [entries, setEntries] = useState([])
 
-
-  function SearchJisho(e) {
-    fetch("https://enthusiastic-ruby-coyote.cyclic.app/jishoResult/" + jishoSearchTerm.current.value)
-    .then(response => {
-      if (!response.ok) {throw new Error(response.status)}
-      return response.json()
-    })
-    .then(json => {
-      return setEntries(json.data)
-    })
-    .catch(error => alert("Fetching Jisho failed. Try again later. " + error))
-
-    ResetSearch()
-  }
+  useEffect(() => {
+    if (entries.length <= 0) {
+      props.setIsSearching(false)
+    } else {
+      props.setIsSearching(true)
+    }
+    
+  }, [entries])
 
   function ResetSearch() {
     props.SelectTerm({})
@@ -45,8 +40,7 @@ export default function Jisho(props) {
     <>
     <div className='jisho'>
       <div className='jishoSearch'>
-        <input className='jishoSearchBar' type="text" ref={jishoSearchTerm}/>
-        <button className="jishoSearchButton" onClick={SearchJisho}>Search Jisho</button>
+        <JishoSearch setEntries={setEntries} ResetSearch={ResetSearch}/>
       </div>
 
       <div className='jishoEntries'>

@@ -33,7 +33,7 @@ export default function Sentence(props) {
   const sentenceUnselected = () => {
     console.log(props.isActive);
     return (
-        <button className='sentenceButton' onClick={() => SelectSentence()}>
+        <button className='sentenceButton button' onClick={() => SelectSentence()}>
           <div className='sentenceJp'>{sentenceData()[0]}</div>
           <div className='sentenceEn'>{props.sentenceEn}</div>
         </button>
@@ -47,7 +47,7 @@ export default function Sentence(props) {
           <div className='sentenceJp'>{sentenceData()[0]}</div>
           <div className='sentenceEn'>{props.sentenceEn}</div>
         </div>
-        <button className='sentenceReset' onClick={() => props.SelectSentence({})}>Change Sentence</button> 
+        <button className='sentenceReset button' onClick={() => props.SelectSentence({})}>Change Sentence</button> 
       </div>
     )  
 }

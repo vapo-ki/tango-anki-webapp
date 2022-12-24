@@ -12,8 +12,17 @@
     color: var(--secondary-text-color);
 }
 
+.sentencesSeperator {
+    color: var(--highlight-text-color);
+}
+
+.sentencesSeperator-inactive {
+    display: none;
+}
+
 .sentencesSeperator > hr {
     min-width: 70em;
+    border: 2px solid var(--button-color);
 }
 
 .sentences {

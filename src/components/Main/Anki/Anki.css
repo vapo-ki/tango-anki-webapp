@@ -1,14 +1,16 @@
 .anki-active {
-    background-color: var(--main-color);
     width: 100em;
     margin: 20px;
-    padding: 20px;
+    margin-top: 40px;
+
+    background-color: var(--secondary-color);
+    border-radius: 5px;
 }
 
 .anki-card {
     background-color: var(--tertiary-color);
     height: fit-content;
-    border-radius: 20px;
+    border-radius: 5px;
     padding: 20px;
     padding-bottom: 40px;
     position: relative;
@@ -25,10 +27,12 @@
 
 .anki-back {
     width: 100%;
+    padding: 0px 20px;
 }
 
 .anki-front {
     width: 100%;
+    padding: 0px 20px;
 }
 
 .vr:after {
@@ -96,4 +100,55 @@
 .cardBackSentenceJp {
     font-size: 2em;
     text-align: center;
+}
+
+.cardSide {
+    text-align: center;
+    color: #151515;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.options {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    color: var(--main-text-color);
+}
+
+.ankiDeckName {
+    min-width: 20em;
+    max-width: 10em;
+    width: 100%;
+
+    background-color: #303030;
+    border: 2px solid #505050;
+    border-radius: 5px;
+    color: white;
+    outline: none;
+    padding-left: 10px;
+    font-size: 1em;
+}
+
+.ankiDeckName:focus {
+    border: 2px solid var(--highlight-text-color);
+}
+
+.ankiButton {
+    width: 10em;
+    background-color: var(--orange-button);
+    border: none;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.ankiButton:hover {
+    
+    background-color: var(--orange-hover-button);
+}
+
+.ankiButton:active {
+    background-color: var(--orange-click-button)
 }

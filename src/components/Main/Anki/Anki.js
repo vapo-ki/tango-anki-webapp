@@ -153,9 +153,11 @@ export default function Anki(props) {
 
   const options = () => {
     return(
-      <>
-      Options
-      </>
+      <div className='options'>
+        <h2>Enter <span className='special-text'>Deck Name</span>:</h2>
+        <input className='ankiDeckName' type="text" ref={deckName} value='TangoDeck' />
+        <button className='ankiButton' onClick={SendToAnki}>Send Anki</button>
+      </div>
     )
   }
 
@@ -179,6 +181,7 @@ export default function Anki(props) {
     return (
       <>
         <div className='cardFrontContent'>
+          <div className='cardSide'>Card Front</div>
           <div className='cardFrontSlug'>
             {props.term.slug}
           </div>
@@ -203,6 +206,7 @@ export default function Anki(props) {
     return (
       <>
         <div className='cardBackContent'>
+        <div className='cardSide'>Card Back</div>
           <div className='cardBackSlugContent'>
             <div className='cardBackSlugReading'>
               {props.term.reading}
@@ -245,7 +249,7 @@ export default function Anki(props) {
   return (
       <div className='anki-active'>
         <div className='anki-options'>
-          
+          {options()}
         </div>
         <div className='anki-card'>
           <div className='anki-front'>
@@ -256,8 +260,6 @@ export default function Anki(props) {
             {cardBack()}
           </div>
         </div>
-        <input className='ankiDeckName' type="text" ref={deckName} />
-        <button onClick={SendToAnki}>Send Anki</button>
         <Model modelTemplate={InitModel} modelName={modelName} />
         <Card getCardData={GetCardData} term={props.term} sentence={props.sentence}/>
       </div>
