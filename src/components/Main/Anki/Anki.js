@@ -6,10 +6,9 @@ import Card from './Card';
 export default function Anki(props) {
   const [ model, setModel ] = useState();
   const [ cardData, setCardData ] = useState();
-  const [ cardLanguage, setCardLanguage ] = useState("japanese")
 
   const deckName = useRef("TangoDeck")
-  const modelName = "TangoModel"
+  const modelName = "Tango_v1"
   const defaultDeck = "TangoDeck"
 
   const InitModel = (modelTemplate) => {
@@ -97,7 +96,7 @@ export default function Anki(props) {
       return response.json()
     })
     .then(json => {
-      console.log(json);
+      //console.log(json);
     })
   }
 
