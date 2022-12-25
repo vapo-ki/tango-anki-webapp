@@ -52,6 +52,7 @@ export default function ModelTemplate(props) {
     `
 
     const backHTML = `
+    
     <div class='slug'>{{furigana:SlugFurigana}}</div>
 
     <hr>
@@ -63,6 +64,7 @@ export default function ModelTemplate(props) {
     
     <div class='sentenceContainer'>
         <div class='sentence'>{{furigana:SentenceFurigana}}</div>
+		<div class='sentenceEn'>{{SentenceEn}}</div>
     </div>
     
     <a class="japanese ios-only" href="https://jisho.org/search/{{Slug}}">Jisho</a>
@@ -70,8 +72,8 @@ export default function ModelTemplate(props) {
     
     <script> 
         let senses = document.getElementById("senses");
-        let poss = '{{Pos}}'.toString().split(",");
-        let definitions = '{{Definitions}}'.toString().split(",");
+        let poss = "{{Pos}}".toString().split(".");
+        let definitions = "{{Definitions}}".toString().split(".");
         
         for (let i = 0; i < poss.length; i++) {
             let definition = document.createElement("span");
@@ -89,6 +91,7 @@ export default function ModelTemplate(props) {
     
     
     </script>
+    
     `
 
     const modelTemplate = () => {
@@ -97,7 +100,7 @@ export default function ModelTemplate(props) {
             "version": 6,
             "params": {
                 "modelName": props.modelName,
-                "inOrderFields": ["Slug", "SlugFurigana", "Sentence", "SentenceFurigana", "Pos", "Definitions"],
+                "inOrderFields": ["Slug", "SlugFurigana", "Sentence", "SentenceFurigana", "Pos", "Definitions", "SentenceEn"],
                 "css": css,
                 "isCloze": false,
                 "cardTemplates": [
