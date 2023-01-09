@@ -106,14 +106,18 @@ export default function Anki(props) {
     HTTPPost(CreateDeckBody())
     HTTPPost(model)
     HTTPPost(GetCardBody())
+
+    content.preventDefault()
   }
 
   const options = () => {
     return(
       <div className='options'>
         <h2>Enter <span className='special-text'>Deck Name</span>:</h2>
-        <input className='ankiDeckName' type="text" ref={deckName}></input>
-        <button className='ankiButton' onClick={SendToAnki}>Send Anki</button>
+        <form className='ankiDeck' onSubmit={SendToAnki}>
+          <input className='ankiDeckName' type="text" ref={deckName}></input>
+          <input type="submit" className='ankiButton' value="Send to Anki"></input>
+        </form>
       </div>
     )
   }

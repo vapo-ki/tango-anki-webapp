@@ -116,6 +116,12 @@
     color: var(--main-text-color);
 }
 
+.ankiDeck {
+    display: flex;
+    gap: 20px;
+}
+
+
 .ankiDeckName {
     min-width: 20em;
     max-width: 10em;

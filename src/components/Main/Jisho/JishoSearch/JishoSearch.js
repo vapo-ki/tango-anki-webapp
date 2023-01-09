@@ -12,12 +12,13 @@ export default function Navbar(props) {
     }
 
 
-    fetch("https://enthusiastic-ruby-coyote.cyclic.app/jishoResult/" + jishoSearchTerm.current.value)
+    fetch("https://tango-api.cyclic.app/jishoResult/" + jishoSearchTerm.current.value)
     .then(response => {
       if (!response.ok) {throw new Error(response.status)}
       return response.json()
     })
     .then(json => {
+      console.log(json.data);
       return props.setEntries(json.data)
     })
     .catch(error => alert("Fetching Jisho failed. Try again later. " + error))

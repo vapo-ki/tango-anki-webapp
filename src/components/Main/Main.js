@@ -14,7 +14,7 @@ export default function Main() {
     //Load SentenceDB
     useEffect (() => {
         console.log("Fetching Database...");
-        fetch("https://enthusiastic-ruby-coyote.cyclic.app/sentenceDB/")
+        fetch("https://tango-api.cyclic.app/sentenceDB/")
         .then(response => {
             if (!response.ok) {throw new Error(response.status)}
             return response.json()

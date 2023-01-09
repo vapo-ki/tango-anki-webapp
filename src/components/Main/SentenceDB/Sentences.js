@@ -27,12 +27,21 @@ export default function Sentences(props) {
     return false
   }
 
+  const SelectNullSentence = () => {
+    props.SelectSentence({
+      sentenceJp: "",
+      sentenceEn: "",
+      sentenceFurigana: ""
+    })
+  }
+
   const isSentenceActive = (sentence) => {
     if (props.selectedSentence.sentenceJp == null){
       return true
     } else if (props.selectedSentence.sentenceEn == sentence.sentenceEn) {
       return true
     }
+
     return false
   }
 
@@ -47,6 +56,9 @@ export default function Sentences(props) {
           {sentences.map(sentence => {
             return <Sentence key={sentence._id} SelectSentence={props.SelectSentence} sentenceEn={sentence.sentenceEn} sentenceJp={sentence.sentenceJp} isSelected={isSentenceSelected(sentence)} isActive={isSentenceActive(sentence)}/>
           })}
+        </div>
+        <div className='noSentence'>
+          <button className='noSentenceButton button' onClick={SelectNullSentence} >Continue without sentence...</button>
         </div>
       </div>
     </>
