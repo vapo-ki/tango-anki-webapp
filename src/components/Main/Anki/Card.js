@@ -28,7 +28,7 @@ export default function Card(props) {
                 defArray.push(sense.definitions.join(", "))
             });
 
-            return [posArray.join(". "), defArray.join(". ")]
+            return [posArray.join("$ "), defArray.join("$ ")]
         }
 
         cardData.Pos = senseData()[0]

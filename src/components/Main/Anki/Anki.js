@@ -8,7 +8,7 @@ export default function Anki(props) {
   const [ cardData, setCardData ] = useState();
 
   const deckName = useRef("TangoDeck")
-  const modelName = "Tango_v1"
+  const modelName = "Tango_v1.1"
   const defaultDeck = "TangoDeck"
 
   const InitModel = (modelTemplate) => {
@@ -17,6 +17,7 @@ export default function Anki(props) {
 
   const GetCardData = (cardData) => {
     setCardData(cardData)
+    console.log(cardData);
   }
 
   const CreateDeckBody = () => {

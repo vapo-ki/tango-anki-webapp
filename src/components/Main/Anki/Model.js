@@ -72,8 +72,8 @@ export default function ModelTemplate(props) {
     
     <script> 
         let senses = document.getElementById("senses");
-        let poss = "{{Pos}}".toString().split(".");
-        let definitions = "{{Definitions}}".toString().split(".");
+        let poss = "{{Pos}}".toString().split("$");
+        let definitions = "{{Definitions}}".toString().split("$");
         
         for (let i = 0; i < poss.length; i++) {
             let definition = document.createElement("span");
