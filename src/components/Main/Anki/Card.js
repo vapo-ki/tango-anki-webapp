@@ -10,6 +10,7 @@ export default function Card(props) {
             SentenceEn: "",
             Pos: "",
             Definitions: "",
+            SentenceAudio: ""
         }
 
         cardData.Slug = props.term.slug
@@ -33,6 +34,8 @@ export default function Card(props) {
 
         cardData.Pos = senseData()[0]
         cardData.Definitions = senseData()[1]
+
+        cardData.SentenceAudio = '[sound:' + props.sentence.audioTag + '.mp3]' 
 
         return cardData
     }

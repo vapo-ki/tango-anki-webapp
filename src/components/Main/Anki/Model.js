@@ -69,6 +69,8 @@ export default function ModelTemplate(props) {
     
     <a class="japanese ios-only" href="https://jisho.org/search/{{Slug}}">Jisho</a>
     
+    <br><br><br>
+    <div>{{SentenceAudio}}</div>
     
     <script> 
         let senses = document.getElementById("senses");
@@ -100,7 +102,7 @@ export default function ModelTemplate(props) {
             "version": 6,
             "params": {
                 "modelName": props.modelName,
-                "inOrderFields": ["Slug", "SlugFurigana", "Sentence", "SentenceFurigana", "Pos", "Definitions", "SentenceEn"],
+                "inOrderFields": ["Slug", "SlugFurigana", "Sentence", "SentenceFurigana", "Pos", "Definitions", "SentenceEn", "SentenceAudio"],
                 "css": css,
                 "isCloze": false,
                 "cardTemplates": [

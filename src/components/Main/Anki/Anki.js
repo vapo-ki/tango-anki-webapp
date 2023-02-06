@@ -10,7 +10,7 @@ export default function Anki(props) {
   const [ sentenceAudio, setSentenceAudio ] = useState("")
 
   const deckName = useRef("TangoDeck")
-  const modelName = "Tango_v1.1"
+  const modelName = "Tango_v1.2"
   const defaultDeck = "TangoDeck"
 
   const InitModel = (modelTemplate) => {
@@ -19,7 +19,6 @@ export default function Anki(props) {
 
   const GetCardData = (cardData) => {
     setCardData(cardData)
-    console.log(props.sentence.library);
   }
 
   const GetSentenceAudio = (audioLink) => {
@@ -62,7 +61,8 @@ export default function Anki(props) {
                     "SentenceFurigana": cardData.SentenceFurigana,
                     "SentenceEn": cardData.SentenceEn,
                     "Pos": cardData.Pos,
-                    "Definitions": cardData.Definitions
+                    "Definitions": cardData.Definitions,
+                    "SentenceAudio": cardData.SentenceAudio
                 }
             }
         }
@@ -82,10 +82,22 @@ export default function Anki(props) {
                   "SentenceFurigana": cardData.SentenceFurigana,
                   "SentenceEn": cardData.SentenceEn,
                   "Pos": cardData.Pos,
-                  "Definitions": cardData.Definitions
+                  "Definitions": cardData.Definitions,
+                  "SentenceAudio": cardData.SentenceAudio
               }
           }
       }
+    }
+  }
+
+  const StoreAudioFileBody = () => {
+    return {
+      "action": "storeMediaFile",
+      "version": 6,
+      "params": {
+          "filename": props.sentence.audioTag + '.mp3',
+          "url": sentenceAudio
+        } 
     }
   }
 
@@ -113,6 +125,7 @@ export default function Anki(props) {
     HTTPPost(CreateDeckBody())
     HTTPPost(model)
     HTTPPost(GetCardBody())
+    HTTPPost(StoreAudioFileBody())
 
     content.preventDefault()
   }
