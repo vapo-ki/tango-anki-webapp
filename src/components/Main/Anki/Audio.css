@@ -1,0 +1,7 @@
+.audioButton {
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+    align-self: center;
+}

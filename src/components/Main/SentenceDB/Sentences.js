@@ -31,7 +31,8 @@ export default function Sentences(props) {
     props.SelectSentence({
       sentenceJp: "",
       sentenceEn: "",
-      sentenceFurigana: ""
+      sentenceFurigana: "",
+      audioTag: ""
     })
   }
 
@@ -54,7 +55,7 @@ export default function Sentences(props) {
         </div>
         <div className='sentences'>
           {sentences.map(sentence => {
-            return <Sentence key={sentence._id} SelectSentence={props.SelectSentence} sentenceEn={sentence.sentenceEn} sentenceJp={sentence.sentenceJp} isSelected={isSentenceSelected(sentence)} isActive={isSentenceActive(sentence)}/>
+            return <Sentence key={sentence._id} id={sentence._id} library={sentence.library} SelectSentence={props.SelectSentence} sentenceEn={sentence.sentenceEn} sentenceJp={sentence.sentenceJp} isSelected={isSentenceSelected(sentence)} isActive={isSentenceActive(sentence)}/>
           })}
         </div>
         <div className='noSentence'>

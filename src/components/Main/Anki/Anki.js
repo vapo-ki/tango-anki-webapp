@@ -1,11 +1,13 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Anki.css'
-import Model from './Model';
-import Card from './Card';
+import Model from './Model'
+import Card from './Card'
+import Audio from './Audio.js'
 
 export default function Anki(props) {
-  const [ model, setModel ] = useState();
-  const [ cardData, setCardData ] = useState();
+  const [ model, setModel ] = useState()
+  const [ cardData, setCardData ] = useState()
+  const [ sentenceAudio, setSentenceAudio ] = useState("")
 
   const deckName = useRef("TangoDeck")
   const modelName = "Tango_v1.1"
@@ -17,7 +19,11 @@ export default function Anki(props) {
 
   const GetCardData = (cardData) => {
     setCardData(cardData)
-    console.log(cardData);
+    console.log(props.sentence.library);
+  }
+
+  const GetSentenceAudio = (audioLink) => {
+    setSentenceAudio(audioLink)
   }
 
   const CreateDeckBody = () => {
@@ -202,6 +208,11 @@ export default function Anki(props) {
             <div className='cardBackSentenceEn'>
               {props.sentence.sentenceEn}
             </div>
+          </div>
+
+          <div className='audioArea'>
+            <Audio audioTag={props.sentence.audioTag} library={props.sentence.library} SetAudio={GetSentenceAudio}/>
+            <div className='playAudioText'>Play Audio</div>
           </div>
         </div>
       </>

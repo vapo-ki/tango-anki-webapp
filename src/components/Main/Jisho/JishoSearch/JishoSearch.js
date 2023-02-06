@@ -18,7 +18,6 @@ export default function Navbar(props) {
       return response.json()
     })
     .then(json => {
-      console.log(json.data);
       return props.setEntries(json.data)
     })
     .catch(error => alert("Fetching Jisho failed. Try again later. " + error))

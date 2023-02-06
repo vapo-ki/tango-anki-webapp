@@ -27,11 +27,10 @@ export default function Sentence(props) {
   }
 
   function SelectSentence() {
-    props.SelectSentence({ "sentenceJp": sentenceData()[0], "sentenceEn": props.sentenceEn, "sentenceFurigana": sentenceData()[1]})
+    props.SelectSentence({ "sentenceJp": sentenceData()[0], "sentenceEn": props.sentenceEn, "sentenceFurigana": sentenceData()[1], "audioTag": props.library + props.id, "library": props.library})
   }
 
   const sentenceUnselected = () => {
-    console.log(props.isActive);
     return (
         <button className='sentenceButton button' onClick={() => SelectSentence()}>
           <div className='sentenceJp'>{sentenceData()[0]}</div>

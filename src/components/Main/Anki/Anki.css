@@ -158,3 +158,13 @@
 .ankiButton:active {
     background-color: var(--orange-click-button)
 }
+
+.audioArea {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.playAudioText {
+    font-size: small;
+}
