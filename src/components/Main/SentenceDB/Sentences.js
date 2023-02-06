@@ -58,9 +58,13 @@ export default function Sentences(props) {
             return <Sentence key={sentence._id} id={sentence._id} library={sentence.library} SelectSentence={props.SelectSentence} sentenceEn={sentence.sentenceEn} sentenceJp={sentence.sentenceJp} isSelected={isSentenceSelected(sentence)} isActive={isSentenceActive(sentence)}/>
           })}
         </div>
-        <div className='noSentence'>
-          <button className='noSentenceButton button' onClick={SelectNullSentence} >Continue without sentence...</button>
-        </div>
+        {sentences.length <= 0 ?
+          <div className='noSentence'>
+            <button className='noSentenceButton button' onClick={SelectNullSentence} >Continue without sentence...</button>
+        </div> :
+        <></>
+        }
+        
       </div>
     </>
   )

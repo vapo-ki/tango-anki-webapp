@@ -35,7 +35,9 @@ export default function Card(props) {
         cardData.Pos = senseData()[0]
         cardData.Definitions = senseData()[1]
 
-        cardData.SentenceAudio = '[sound:' + props.sentence.audioTag + '.mp3]' 
+        if (props.sentence.sentenceJp != "") {
+            cardData.SentenceAudio = '[sound:' + props.sentence.audioTag + '.mp3]'
+        }
 
         return cardData
     }

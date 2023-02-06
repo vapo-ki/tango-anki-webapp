@@ -225,7 +225,6 @@ export default function Anki(props) {
 
           <div className='audioArea'>
             <Audio audioTag={props.sentence.audioTag} library={props.sentence.library} SetAudio={GetSentenceAudio}/>
-            <div className='playAudioText'>Play Audio</div>
           </div>
         </div>
       </>

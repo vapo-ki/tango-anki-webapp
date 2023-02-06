@@ -1,7 +1,7 @@
 .anki-active {
     width: 100em;
     margin: 20px;
-    margin-top: 40px;
+    margin-top: 20px;
 
     background-color: var(--secondary-color);
     border-radius: 5px;
