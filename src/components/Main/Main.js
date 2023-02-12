@@ -10,6 +10,7 @@ export default function Main() {
     const [sentence, setSentence] = useState({})
     const [sentenceDB, setSentenceDB] = useState({})
     const [isSearching, setIsSearching] = useState(false)
+    const [selectedDeck, selectDeck] = useState("TangoDeck")
 
     //Load SentenceDB
     useEffect (() => {
@@ -45,7 +46,7 @@ export default function Main() {
             <Jisho SelectTerm={SelectTerm} selectedTerm={term} setIsSearching={setIsSearching} />
             {isSearching ? "" : <HowTo />}
             {Object.keys(term).length !== 0 ? <Sentences sentenceDB = {sentenceDB} SelectSentence={SelectSentence} selectedSentence={sentence} term={term.slug}/> : ''}
-            {Object.keys(sentence).length !== 0 && Object.keys(term).length !== 0 ? <Anki term={term} sentence={sentence}/> : ''}
+            {Object.keys(sentence).length !== 0 && Object.keys(term).length !== 0 ? <Anki term={term} sentence={sentence} selectDeck={selectDeck} selectedDeck={selectedDeck}/> : ''}
         </div>
     )
 }
