@@ -30,7 +30,6 @@ export default function Main() {
     }, [])
 
     const Reset = () => {
-        console.log("HOORAY");
         setTerm({})
         setSentence({})
         setIsSearching(false)
