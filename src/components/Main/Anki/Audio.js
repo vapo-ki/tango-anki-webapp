@@ -7,7 +7,7 @@ export default function Audio(props) {
 
     useEffect(() => {
         if (props.library != undefined) {
-            fetch("http://localhost:3621/audio/" + props.library + '/' + props.audioTag)
+            fetch("https://tango-api.cyclic.app/audio/" + props.library + '/' + props.audioTag)
             .then(response => {
                 if (!response.ok) {throw new Error(response.status)}
                 return response.json()
