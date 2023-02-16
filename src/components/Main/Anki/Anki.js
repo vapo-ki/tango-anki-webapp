@@ -144,7 +144,7 @@ export default function Anki(props) {
   const options = () => {
     return(
       <div className='options'>
-        <h2>Card <span className='special-text'>options</span></h2>
+        <h2>Card <span className='special-text'>Options</span></h2>
         <div className='optionsWrapper'>
           <div className='optionAudio'>
             <span>Play Audio</span>

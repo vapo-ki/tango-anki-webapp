@@ -5,12 +5,16 @@ export default function Navbar(props) {
   const jishoSearchTerm = useRef()
 
   function SearchJisho(e) {
+    if (jishoSearchTerm.current.value.trim().length === 0) {
+      props.reset()
+      return
+    }
     if (e.keyCode != null) {
       if (e.keyCode !== 13) {
         return
       }
     }
-
+    
 
     fetch("https://tango-api.cyclic.app/jishoResult/" + jishoSearchTerm.current.value)
     .then(response => {

@@ -43,7 +43,8 @@ export default function JishoEntry(props) {
     for (var sense in selectedSenses) {
       senses.push({
         "pos": selectedSenses[sense].pos,
-        "definitions": selectedSenses[sense].english_definitions
+        "definitions": selectedSenses[sense].english_definitions,
+        "tags": selectedSenses.tags
       })
     }
     tempEntry.senses = senses
@@ -82,12 +83,22 @@ export default function JishoEntry(props) {
       if (props.isSelected == true) {
         return (
           <><br />
-          <button className='unselectButton button' onClick={() => props.SelectTerm({})}>Change Selection</button>
+          <button className='invertedButton unselectButton' onClick={() => props.SelectTerm({})}>Change Term</button>
           </>
           
         )
       }
     }
+
+    //const searchKanaButton = () => {
+    //  if (props.isSelected == true) {
+    //    return (
+    //      <>
+    //        <button className='searchKanaButton button' onClick={() => props.SelectTerm({})}>Search Kana</button>
+    //      </>
+    //    )
+    //  }
+    //}
 
     return (
       <div className='entryExtraContainer'>
@@ -101,6 +112,9 @@ export default function JishoEntry(props) {
         <div className='entryUnselect'>
           {backButton()}
         </div>
+        <div className='entrySearchKana'>
+          
+        </div>
       </div>
     )
   }
@@ -110,23 +124,25 @@ export default function JishoEntry(props) {
       return (
         <div className='entryContainer'>
             <div className='entrySlugContainer'>
+              <div className='entrySlugWrapper'>
               <div className='entryReading'>
                 {props.info.japanese[0].reading}
               </div>
               <div className='entrySlug'>
                 {props.info.slug}
               </div><br/>
+              </div>
               <div className='entryExtra'>
                 {extraTemplate()}
               </div>
             </div>
             <div className='entryTranslation'>
-              {props.isSelected ? "Select Translations:" : ""}
+              {props.isSelected ? <h3>Select <span className='special-text'>Translations</span></h3> : ""}
               {
                 Object.entries(props.info.senses).map(([key, sense]) => {
                   let first = false
                   if (key == 0) { first = true }
-                  return <JishoSense key={key} SetSenses={SetSenses} id={key} pos={sense.parts_of_speech} english_definitions={sense.english_definitions} isEntrySelected={props.isSelected} first={first}/>
+                  return <JishoSense key={key} SetSenses={SetSenses} id={key} pos={sense.parts_of_speech} english_definitions={sense.english_definitions} tags={sense.tags} isEntrySelected={props.isSelected} first={first}/>
                 })
               }
             </div>
@@ -136,7 +152,7 @@ export default function JishoEntry(props) {
 
     if (!props.isSelected) {
       return (
-        <button className='button jishoEntryButton' onClick={() => props.SelectTerm(entry)}>
+        <button className='jishoEntryButton' onClick={() => props.SelectTerm(entry)}>
           {entryInfo()}
         </button>
       )

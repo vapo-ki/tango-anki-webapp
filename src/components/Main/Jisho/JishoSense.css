@@ -23,7 +23,11 @@
     width: 100%;
     height: 100%;
     background-color: var(--secondary-color);
-    border: none;
+
+    border: solid;
+    border-color: var(--button-color);
+    border-radius: 10px;
+
     color: white;
     padding: 10px 10px !important;
     cursor: pointer;
@@ -31,38 +35,37 @@
     display: flex;
     justify-content: space-between;
     pointer-events: auto;
+
+    color: var(--main-text-color);
 }
 
 .senseButton:hover {
-    background-color: rgb(27, 27, 27);
+    border-color: var(--secondary-highlight-color);
 }
 
-.senseButton input[type="checkbox"] {
-    appearance: none;
-  
-    color: currentColor;
-    width: 2.5em;
-    height: 2.5em;
-    border: 4px solid var(--main-color);
-    border-radius: 5px;
-  
-    display: grid;
-    place-content: center;
-  }
-  
-  .senseButton input[type="checkbox"]::before {
-    content: "";
-    width: 2em;
-    height: 2em;
-    border-radius: 5px;
-
+.senseButtonSelected {
+    position: relative;
+    width: 100%;
+    height: 100%;
     background-color: var(--button-color);
-  }
-  
-  .senseButton input[type="checkbox"]:checked::before {
-    background-color: var(--highlight-text-color);
-  }
 
+    border: solid;
+    border-color: var(--button-border-color);
+    border-radius: 10px;
+
+    color: white;
+    padding: 10px 10px !important;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    pointer-events: auto;
+    color: var(--main-text-color);
+}
+
+.senseButtonSelected:hover {
+    border-color: var(--highlight-text-color);
+}
 
 .senseInfo {
     display: flex;

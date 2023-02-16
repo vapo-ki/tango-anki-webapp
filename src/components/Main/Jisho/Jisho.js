@@ -20,6 +20,11 @@ export default function Jisho(props) {
     props.SelectTerm({})
   }
 
+  const Reset = () => {
+    setEntries([])
+    props.reset()
+  }
+
   const isEntrySelected = (entry) => {
     if (props.selectedTerm.slug != null && props.selectedTerm.slug == entry.slug) {
       return true
@@ -40,15 +45,24 @@ export default function Jisho(props) {
     <>
     <div className='jisho'>
       <div className='jishoSearch'>
-        <JishoSearch setEntries={setEntries} ResetSearch={ResetSearch}/>
+        <JishoSearch setEntries={setEntries} ResetSearch={ResetSearch} reset={Reset}/>
       </div>
-
-      <div className='jishoEntries'>
-        {entries.map(entry => {
-          return <JishoEntry key={entry.slug} SelectTerm={props.SelectTerm} info={entry} isActive={isEntryActive(entry)} isSelected={isEntrySelected(entry)}/>
-        })}
+      {!entries.length <= 0 ? 
+      <div className={Object.keys(props.selectedTerm).length <= 0 ? 'jishoWrapper' : 'jishoWrapperSelectedTerm'}>
+        {Object.keys(props.selectedTerm).length <= 0 ?
+          <div className='jishoEntryHeaderWrapper'>
+            <h2>Select <span className='special-text'>Term</span></h2>
+          </div>
+          : ""
+        }
+        
+        <div className='jishoEntries'>
+          {entries.map(entry => {
+            return <JishoEntry key={entry.slug} SelectTerm={props.SelectTerm} info={entry} isActive={isEntryActive(entry)} isSelected={isEntrySelected(entry)}/>
+          })}
+        </div>
       </div>
-
+      : ""}
     </div>
     
 

@@ -46,7 +46,7 @@ export default function Sentence(props) {
           <div className='sentenceJp'>{sentenceData()[0]}</div>
           <div className='sentenceEn'>{props.sentenceEn}</div>
         </div>
-        <button className='sentenceReset button' onClick={() => props.SelectSentence({})}>Change Sentence</button> 
+        <button className='sentenceReset invertedButton' onClick={() => props.SelectSentence({})}>Change Sentence</button> 
       </div>
     )  
 }

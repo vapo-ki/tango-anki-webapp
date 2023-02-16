@@ -18,16 +18,18 @@ export default function JishoSense(props) {
     const infoSelected = () => {
         return (
             <div className='senseContainer'>
-                <button className='senseButton button' onClick={() => ToggleSense()}>
+                <button className={isSelected ? 'senseButtonSelected' : 'senseButton'} onClick={() => {ToggleSense()}}>
                     <div className='senseInfo'>
                         <div className='sensePos'>
                             {props.pos.join(", ")}
                         </div>
                         <div className='senseTranslations'>
-                            {props.english_definitions.join(", ")}
+                            <span className='special-text'>{props.english_definitions.join(", ")}</span>
+                        </div>
+                        <div className='senseTags'>
+                            {props.tags.join(", ")}
                         </div>
                     </div>
-                    <input type="checkbox" className='senseCheckbox' onChange={e => {}} checked={isSelected ? 'checked' : ''}></input>
                 </button>
             </div>
         )

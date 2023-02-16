@@ -29,6 +29,13 @@ export default function Main() {
         })
     }, [])
 
+    const Reset = () => {
+        console.log("HOORAY");
+        setTerm({})
+        setSentence({})
+        setIsSearching(false)
+    }
+
     const SelectTerm = selectedTerm => {
         setTerm(selectedTerm)
     }
@@ -43,9 +50,9 @@ export default function Main() {
 
     return (
         <div className='main'>  
-            <Jisho SelectTerm={SelectTerm} selectedTerm={term} setIsSearching={setIsSearching} />
+            <Jisho SelectTerm={SelectTerm} selectedTerm={term} setIsSearching={setIsSearching} reset={Reset}/>
             {isSearching ? "" : <HowTo />}
-            {Object.keys(term).length !== 0 ? <Sentences sentenceDB = {sentenceDB} SelectSentence={SelectSentence} selectedSentence={sentence} term={term.slug}/> : ''}
+            {Object.keys(term).length !== 0 ? <Sentences sentenceDB = {sentenceDB} SelectSentence={SelectSentence} selectedSentence={sentence} term={term}/> : ''}
             {Object.keys(sentence).length !== 0 && Object.keys(term).length !== 0 ? <Anki term={term} sentence={sentence} selectDeck={selectDeck} selectedDeck={selectedDeck}/> : ''}
         </div>
     )

@@ -1,7 +1,9 @@
 .cardContainer-active {
-    max-width: 60rem;
+    max-width: 65rem;
     min-width: 30rem;
-    width: 100%
+    width: 100%;
+
+    display: flex;
 }
 
 .cardContainer-inActive {
@@ -12,16 +14,23 @@
     width: 100%;
     height: 100%;
     background-color: var(--secondary-color);
-    border: none;
-    color: var(--main-text-color);
-    padding: 20px 20px;
+
+    border: solid;
+    border-color: var(--button-color);
+    border-radius: 10px;
+
+    color: white;
+    padding: 20px 20px !important;
     cursor: pointer;
 
     display: flex;
+    justify-content: space-between;
+    pointer-events: auto;
 }
 
 .jishoEntryButton:hover {
-    background-color: var(--tertiary-color);
+    background-color: var(--button-color);
+    border-color: var(--button-border-color);
 }
 
 .jishoEntrySelected {
@@ -30,10 +39,10 @@
     background-color: var(--main-color);
 
     border-style: solid;
-    border-width: 2px;
+    border-width: 3px;
     border-color: var(--highlight-text-color);
 
-    border-radius: 5px;
+    border-radius: 10px;
 
     color: var(--main-text-color);
     padding: 20px 30px;
@@ -64,6 +73,13 @@
     
 }
 
+.entrySlugContainer {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
 .entryTranslation {
     display: flex;
     flex-direction: column;
@@ -74,6 +90,7 @@
 .entryExtra {
     grid-column: 1;
     grid-row: 2;
+    height: auto;
 }
 
 .entrySensePos {
@@ -88,4 +105,21 @@
 
 .entryExtraContainer {
     text-align: start;
+}
+
+.unselectButton {
+    background-color: var(--main-color);
+    font-size:medium;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 120px;
+    border-color: var(--button-color);
+
+    color: var(--main-text-color);
+    padding: 10px 20px;
+}
+
+.unselectButton:hover {
+    border-color: var(--secondary-highlight-color);
 }

@@ -1,19 +1,72 @@
 .jisho {
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .jisho > hr {
     border-top: 1px solid var(--secondary-color);
 }
 
-.jishoEntries {
-    min-width: 60em;
+.jishoWrapper {
+    min-width: 32rem;
+    max-width: 67rem;
     width: 100%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-self: center;
+
+    gap: 1rem;
+    margin-top: 2rem;
+
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--secondary-color);
+    color: var(--main-text-color);
+
+    padding-bottom: 1rem;
+    border-radius: 26px;
+}
+
+.jishoWrapperSelectedTerm {
+    min-width: 32rem;
+    max-width: 67rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+
+    gap: 1rem;
+    margin-top: 2rem;
+    color: var(--main-text-color);
+
+    padding-bottom: 1rem;
+    border-radius: 26px;
+}
+
+.jishoEntries {
+    min-width: 30rem;
+    max-width: 65rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
 
     gap: 10px;
-    margin-top: 20px;
+}
+
+.jishoEntryHeaderWrapper {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
 }
