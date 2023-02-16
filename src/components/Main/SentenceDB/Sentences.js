@@ -6,6 +6,7 @@ export default function Sentences(props) {
   const [ sentences, setSentences ] = useState([])
   const [ searchTerm, setSearchTerm ] = useState(props.term.slug)
   const sentenceDB = props.sentenceDB
+
   useEffect(() => {
     if (sentenceDB != undefined) {
       console.log("Checking Database for sentences containing:", searchTerm, "...");
@@ -66,7 +67,6 @@ export default function Sentences(props) {
           })}
         </div>
           <div className='noSentence'>
-            {console.log(props)}
             {Object.keys(props.selectedSentence).length <= 0 || props.selectedSentence.sentenceJp == "" ?
             <button className='noSentenceButton button' onClick={() => {SelectNullSentence()}}>{Object.keys(props.selectedSentence).length <= 0 ? "Continue without sentence..." : "Return to sentence search..."}</button> :
             "" }
