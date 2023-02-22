@@ -1,14 +1,19 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import './JishoSearch.css'
 
 export default function Navbar(props) {
   const jishoSearchTerm = useRef()
+  const [ isConnected, setIsConnected ] = useState()
 
   useEffect(() => {
     const interval = setInterval(() => {
       PingAnki()
       .then(res => {
-        console.log(res);
+        if (res == 0) {
+          setIsConnected(false)
+        } else {
+          setIsConnected(true)
+        }
       })
     }, 2000)
 
@@ -68,12 +73,11 @@ export default function Navbar(props) {
 
   return (
     <>
-    <a className='logo' href="https://tango.cyclic.app/">単語</a>
+    {isConnected ? <a className='logo' href="https://tango.cyclic.app/" title="Anki Connected">単語</a> : <a className='logoDisconnected' href="https://tango.cyclic.app/" title="Anki not Connected">単語</a>}
     <div className='jishoSearchContainer'>
         <input className='jishoSearchBar' type="text" ref={jishoSearchTerm} placeholder="Search Jisho..." onKeyDown={SearchJisho} />
         <button className="jishoSearchButton" onClick={SearchJisho} >Search Jisho</button>
     </div>
-
     
     </>
     

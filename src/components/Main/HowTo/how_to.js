@@ -17,9 +17,10 @@ export default function how_to() {
       <span>
        - Anki must be installed<br></br>
        - Install <a className='link' href='https://ankiweb.net/shared/info/2055492159'>Anki Connect</a><br></br>
-       - In the Anki Connect plugin configs, change <span className='special-text'>"http://localhost"</span> to <span className='special-text'>"*"</span><br></br>
-       - Restart Anki!
-      </span><br/><br/><br/>
+       - In the Anki Connect plugin configurations, change <span className='special-text'>"http://localhost"</span> to <span className='special-text'>"*"</span><br></br>
+       <br></br>
+       If anki is connected successfully, the logo of the website in the top left will be <span className='special-text'>orange</span>.
+      </span><br/><br/>
       <span className='special-text'><h2>Anki has to stay open while you use the website!</h2></span>
       <br></br><br></br>
       <h2>Sources</h2><br></br>
@@ -32,7 +33,6 @@ export default function how_to() {
       <h2>Planned features</h2><br></br>
       <span>
          - Waaaay more sentences. <br></br>
-         - A visible sign, telling you that anki is connected with the website <br></br>
          - Sorting / Filtering sentences, as well as only showing a limited amount (paged)<br></br>
       </span>
       <br></br><br></br>

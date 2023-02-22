@@ -17,6 +17,15 @@
     text-decoration: none;
 }
 
+.logoDisconnected {
+    color: var(--secondary-text-color);
+    font-family: "Yuji Syuku";
+    font-size: 2.5em;
+    padding-left: 20px;
+    width: 2.5em;
+    text-decoration: none;
+}
+
 .jishoSearchContainer {
     width: 100%;
     height: 3em;
