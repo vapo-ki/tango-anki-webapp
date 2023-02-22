@@ -1,8 +1,45 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import './JishoSearch.css'
 
 export default function Navbar(props) {
   const jishoSearchTerm = useRef()
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      PingAnki()
+      .then(res => {
+        console.log(res);
+      })
+    }, 2000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const PingAnki = () => {
+    const body = {
+      "action": "version",
+      "version": 6
+    }
+  
+    const request = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    }
+
+    return fetch('http://localhost:8765', request)
+    .then(response => {
+      return response.json()
+    })
+    .then(json => {
+      return 1
+    })
+    .catch(error => {
+      return 0
+    })
+  }
 
   function SearchJisho(e) {
     if (jishoSearchTerm.current.value.trim().length === 0) {
