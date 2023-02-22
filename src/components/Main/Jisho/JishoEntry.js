@@ -15,7 +15,6 @@ export default function JishoEntry(props) {
     if (props.isSelected) {
       props.SelectTerm(entry)
     }
-
   }, [entry])
 
   const SetSenses = (sense, isRemoving) => {
@@ -36,8 +35,15 @@ export default function JishoEntry(props) {
 
   function ExtractInformation() {
     let tempEntry = {}
-    tempEntry.slug = props.info.slug
+    tempEntry.slug = props.info.japanese[0].word
+    if (tempEntry.slug == undefined) {
+      tempEntry.slug = props.info.japanese[0].reading
+    }
+
     tempEntry.reading = props.info.japanese[0].reading
+    if (tempEntry.reading == undefined || tempEntry.reading == tempEntry.slug) {
+      tempEntry.reading = ""
+    }
 
     let senses = []
     for (var sense in selectedSenses) {
@@ -46,6 +52,7 @@ export default function JishoEntry(props) {
         "definitions": selectedSenses[sense].english_definitions,
         "tags": selectedSenses.tags
       })
+      console.log(selectedSenses);
     }
     tempEntry.senses = senses
     
@@ -79,26 +86,21 @@ export default function JishoEntry(props) {
       return (<></>)
     }
 
+    const resetEntry = () => {
+      setSenses([])
+      props.SelectTerm({})
+    }
+
     const backButton = () => {
       if (props.isSelected == true) {
         return (
           <><br />
-          <button className='invertedButton unselectButton' onClick={() => props.SelectTerm({})}>Change Term</button>
+          <button className='invertedButton unselectButton' onClick={() => resetEntry()}>Change Term</button>
           </>
           
         )
       }
     }
-
-    //const searchKanaButton = () => {
-    //  if (props.isSelected == true) {
-    //    return (
-    //      <>
-    //        <button className='searchKanaButton button' onClick={() => props.SelectTerm({})}>Search Kana</button>
-    //      </>
-    //    )
-    //  }
-    //}
 
     return (
       <div className='entryExtraContainer'>
@@ -126,10 +128,10 @@ export default function JishoEntry(props) {
             <div className='entrySlugContainer'>
               <div className='entrySlugWrapper'>
               <div className='entryReading'>
-                {props.info.japanese[0].reading}
+                {entry.reading}
               </div>
               <div className='entrySlug'>
-                {props.info.slug}
+                {entry.slug}
               </div><br/>
               </div>
               <div className='entryExtra'>

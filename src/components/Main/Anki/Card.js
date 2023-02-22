@@ -14,7 +14,11 @@ export default function Card(props) {
         }
 
         cardData.Slug = props.term.slug
-        cardData.SlugFurigana = props.term.slug + "[" + props.term.reading + "]"
+
+        cardData.SlugFurigana = props.term.slug
+        if (props.term.reading != "") {
+            cardData.SlugFurigana += "[" + props.term.reading + "]"
+        }
 
         cardData.Sentence = props.sentence.sentenceJp
         cardData.SentenceFurigana = props.sentence.sentenceFurigana
@@ -38,7 +42,7 @@ export default function Card(props) {
         if (props.sentence.sentenceJp != "") {
             cardData.SentenceAudio = '[sound:' + props.sentence.audioTag + '.mp3]'
         }
-
+        console.log(cardData);
         return cardData
     }
 

@@ -58,7 +58,7 @@ export default function Navbar(props) {
     }
     
 
-    fetch("https://tango-api.cyclic.app/jishoResult/" + jishoSearchTerm.current.value)
+    fetch("http://localhost:3621/jishoResult/" + jishoSearchTerm.current.value) //fetch("https://tango-api.cyclic.app/jishoResult/" + jishoSearchTerm.current.value)
     .then(response => {
       if (!response.ok) {throw new Error(response.status)}
       return response.json()

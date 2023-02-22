@@ -13,7 +13,7 @@ export default function Jisho(props) {
     } else {
       props.setIsSearching(true)
     }
-    
+    console.log(entries);
   }, [entries])
 
   function ResetSearch() {
@@ -26,7 +26,15 @@ export default function Jisho(props) {
   }
 
   const isEntrySelected = (entry) => {
-    if (props.selectedTerm.slug != null && props.selectedTerm.slug == entry.slug) {
+    var slug
+    if (entry.japanese != undefined) {
+      slug = entry.japanese[0].word
+      if (slug == undefined) {
+        slug = entry.japanese[0].reading
+      }
+    }
+    
+    if (props.selectedTerm.slug != null && props.selectedTerm.slug == slug) {
       return true
     }
     return false

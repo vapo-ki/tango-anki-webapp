@@ -24,6 +24,8 @@ export default function Anki(props) {
     .then(result => {
       setDeckNameList(result.result)
     })
+
+    console.log(cardData);
   }, [])
 
   useEffect(() => {

@@ -37,6 +37,7 @@ export default function Main() {
 
     const SelectTerm = selectedTerm => {
         setTerm(selectedTerm)
+        console.log(selectedTerm);
     }
 
     const SelectSentence = selectedSentence => {
