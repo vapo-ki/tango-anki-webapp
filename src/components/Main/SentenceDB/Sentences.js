@@ -12,15 +12,43 @@ export default function Sentences(props) {
       console.log("Checking Database for sentences containing:", searchTerm, "...");
       let temp = []
       for (var sentence in sentenceDB){
-        if (sentenceDB[sentence].sentenceJp.indexOf(searchTerm) !== -1) {
+        if (CleanSentence(sentenceDB[sentence].sentenceJp).indexOf(searchTerm) !== -1) {
           temp.push(sentenceDB[sentence])
+          
         }
       }
+      temp.sort((a, b) => CleanSentence(a.sentenceJp).length - CleanSentence(b.sentenceJp).length)
       props.SelectSentence({})
       setSentences(temp)
+
     }
   }, [sentenceDB, searchTerm])
 
+  function CleanSentence(sentence) {
+    var isReading = false
+    let dataArray = ["", "", "", ""]
+    for (var i = 0; i < sentence.length; i++) {              
+        if (sentence[i] == "["){
+            isReading = true
+            dataArray[1] += sentence[i]
+        } else if (sentence[i] == "]") {
+            isReading = false
+            dataArray[1] += sentence[i] + " "
+        } else {
+            if (!isReading) {
+                dataArray[0] += sentence[i]
+                dataArray[1] += sentence[i]
+            } else {
+                dataArray[1] += sentence[i]
+            }
+        }
+    }
+    const exportSentence = dataArray[0].replace(/\s/g, "")
+    return exportSentence
+  }
+
+
+  
   const isSentenceSelected = (sentence) => {
     if (props.selectedSentence != null && props.selectedSentence.sentenceEn == sentence.sentenceEn) {
       return true
@@ -63,7 +91,7 @@ export default function Sentences(props) {
         </div>
         <div className='sentences'>
           {sentences.map(sentence => {
-            return <Sentence key={sentence._id} id={sentence.localId} library={sentence.library} SelectSentence={props.SelectSentence} sentenceEn={sentence.sentenceEn} sentenceJp={sentence.sentenceJp} isSelected={isSentenceSelected(sentence)} isActive={isSentenceActive(sentence)}/>
+            return <Sentence key={sentence._id} term={searchTerm} id={sentence.localId} library={sentence.library} SelectSentence={props.SelectSentence} sentenceEn={sentence.sentenceEn} sentenceJp={sentence.sentenceJp} isSelected={isSentenceSelected(sentence)} isActive={isSentenceActive(sentence)}/>
           })}
         </div>
           <div className='noSentence'>

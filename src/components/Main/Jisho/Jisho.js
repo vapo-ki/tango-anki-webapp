@@ -26,6 +26,8 @@ export default function Jisho(props) {
   }
 
   const isEntrySelected = (entry) => {
+    console.log(entry);
+    console.log(props.selectedTerm);
     var slug
     if (entry.japanese != undefined) {
       slug = entry.japanese[0].word
@@ -34,7 +36,7 @@ export default function Jisho(props) {
       }
     }
     
-    if (props.selectedTerm.slug != null && props.selectedTerm.slug == slug) {
+    if (props.selectedTerm.id != null && props.selectedTerm.id == entry.id) {
       return true
     }
     return false
@@ -65,8 +67,8 @@ export default function Jisho(props) {
         }
         
         <div className='jishoEntries'>
-          {entries.map(entry => {
-            return <JishoEntry key={entry.slug} SelectTerm={props.SelectTerm} info={entry} isActive={isEntryActive(entry)} isSelected={isEntrySelected(entry)}/>
+          {entries.map((entry) => {
+            return <JishoEntry key={entry.id} SelectTerm={props.SelectTerm} info={entry} isActive={isEntryActive(entry)} isSelected={isEntrySelected(entry)}/>
           })}
         </div>
       </div>

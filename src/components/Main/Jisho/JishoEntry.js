@@ -15,6 +15,7 @@ export default function JishoEntry(props) {
     if (props.isSelected) {
       props.SelectTerm(entry)
     }
+    console.log(entry);
   }, [entry])
 
   const SetSenses = (sense, isRemoving) => {
@@ -59,6 +60,8 @@ export default function JishoEntry(props) {
     tempEntry.jlpt = props.info.jlpt[0]
     tempEntry.is_common = props.info.is_common
     tempEntry.tags = props.info.tags
+
+    tempEntry.id = props.info.id
 
     setEntry(tempEntry)
   }

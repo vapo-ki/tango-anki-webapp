@@ -5,7 +5,7 @@ export default function Sentence(props) {
 
   const sentenceData = () => {
     var isReading = false
-    let dataArray = ["", ""]
+    let dataArray = ["", "", "", ""]
     for (var i = 0; i < props.sentenceJp.length; i++) {              
         if (props.sentenceJp[i] == "["){
             isReading = true
@@ -23,6 +23,11 @@ export default function Sentence(props) {
         }
     }
 
+    dataArray[2] = dataArray[0].slice(0, dataArray[0].indexOf(props.term))
+    dataArray[3] = dataArray[0].slice(dataArray[0].indexOf(props.term)).replace(props.term, "")
+
+    dataArray[2] = dataArray[2].replace(/\s/g, "")
+    dataArray[3] = dataArray[3].replace(/\s/g, "")
     return dataArray
   }
 
@@ -33,7 +38,7 @@ export default function Sentence(props) {
   const sentenceUnselected = () => {
     return (
         <button className='sentenceButton button' onClick={() => SelectSentence()}>
-          <div className='sentenceJp'>{sentenceData()[0]}</div>
+          <div className='sentenceJp'>{sentenceData()[2]}<span className='special-text'>{props.term}</span>{sentenceData()[3]}</div>
           <div className='sentenceEn'>{props.sentenceEn}</div>
         </button>
     )
@@ -43,7 +48,7 @@ export default function Sentence(props) {
     return (
       <div className='sentenceSelected'>
         <div className='sentenceContent'>
-          <div className='sentenceJp'>{sentenceData()[0]}</div>
+          <div className='sentenceJp'>{sentenceData()[2]}<span className='special-text'>{props.term}</span>{sentenceData()[3]}</div>
           <div className='sentenceEn'>{props.sentenceEn}</div>
         </div>
         <button className='sentenceReset invertedButton' onClick={() => props.SelectSentence({})}>Change Sentence</button> 

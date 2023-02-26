@@ -64,7 +64,11 @@ export default function Navbar(props) {
       return response.json()
     })
     .then(json => {
-      return props.setEntries(json.data)
+      const entriesIndexed = json.data.map((entry, index) => {
+        entry["id"] = index
+        return entry
+      })
+      return props.setEntries(entriesIndexed)
     })
     .catch(error => alert("Fetching Jisho failed. Try again later. " + error))
 

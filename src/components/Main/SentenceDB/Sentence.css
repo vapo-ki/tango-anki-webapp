@@ -17,8 +17,12 @@
 }
 
 .sentenceJp {
-    color: var(--highlight-text-color);
+    color: var(--main-text-color);
     font-size: 1.4em;
+}
+
+.sentenceEn {
+    color: var(--main-text-color);
 }
 
 .sentenceContainer-inactive {
